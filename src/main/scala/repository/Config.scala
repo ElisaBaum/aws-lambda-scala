@@ -1,6 +1,6 @@
 package repository
 
-import provider.util.KMSDecryptionUtil
+import repository.util.KMSDecryptionUtil
 
 case class Config(githubApiUrl: String, personalAccessToken: String)
 

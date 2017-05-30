@@ -3,8 +3,8 @@ package repository
 import java.io.{InputStream, OutputStream}
 
 import com.amazonaws.services.lambda.runtime.{Context, RequestStreamHandler}
-import provider.data.{Request, Response}
-import provider.service.GitHubService
+import repository.data.{Request, Response}
+import repository.service.GitHubService
 
 class Handler extends RequestStreamHandler {
 
