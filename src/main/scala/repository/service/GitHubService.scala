@@ -1,5 +1,7 @@
 package repository.service
 
+import java.io.{InputStream, OutputStream}
+
 import play.api.libs.json.Json
 import repository.Config
 import repository.data.{Request, Response}
@@ -8,10 +10,14 @@ import scalaj.http.Http
 
 class GitHubService(config: Config) {
 
-  def repositories(request: Request): Response = {
+  def repositories(input: InputStream, output: OutputStream): Unit = {
+    val request = Request(input)
+
     val httpRequest = buildRepositoriesRequest(request)
-    val response = httpRequest.asString
-    Response(Json.parse(response.body))
+    val httpResponse = httpRequest.asString
+
+    val response = Response(Json.parse(httpResponse.body))
+    Response.toOutput(response, output)
   }
 
   private def buildRepositoriesRequest(request: Request) = {

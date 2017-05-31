@@ -10,11 +10,12 @@ object Response {
 
   implicit val responseWrites: Writes[Response] = Json.writes[Response]
 
+  def apply(repositories: Vector[Repository]): Response = new Response(repositories)
+
   def apply(json: JsValue): Response = {
     json.validate[Vector[Repository]] match {
       case JsSuccess(repos, _) => new Response(repos)
-      case JsError(error) =>
-        throw new Exception(s"Could not parse repositories: $error")
+      case JsError(error) => throw new Exception(s"Could not parse repositories: $error")
     }
   }
 

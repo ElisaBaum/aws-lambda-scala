@@ -6,7 +6,6 @@ case class Repository(name: String,
                       starsCount: Option[Long] = None,
                       watchersCount: Option[Long] = None)
 
-
 object Repository {
   import play.api.libs.functional.syntax._
   import play.api.libs.json._
