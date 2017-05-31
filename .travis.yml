@@ -6,6 +6,17 @@ scala:
 jdk:
   - oraclejdk8
 
+deploy:
+  provider: lambda
+  function_name: "lambda-github-repositories"
+  region: "eu-central-1"
+  role: $role
+  runtime: "java8"
+  memory_size: "512"
+  handler_name: "repository.Handler::handleRequest"
+  access_key_id: $access_key_id
+  secret_access_key: $access_key
+
 script:
   - sbt ++$TRAVIS_SCALA_VERSION coverage test coverageReport
 
