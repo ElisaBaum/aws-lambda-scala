@@ -2,3 +2,5 @@
 [![codecov.io](https://codecov.io/github/ElisaBaum/aws-lambda-scala/coverage.svg?branch=master)](https://codecov.io/github/ElisaBaum/aws-lambda-scala)
 
 # aws-lambda-scala
+
+AWS Lambda example with AWS CodeBuild integration with automatic deployment in AWS CodePipeline.
