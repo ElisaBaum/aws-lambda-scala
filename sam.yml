@@ -7,10 +7,9 @@ Resources:
     Properties:
       Handler: 'repository.Handler::handleRequest'
       Runtime: java8
-      CodeUri: ./deploy
       MemorySize: 512
       Timeout: 10
-      Role: 'arn:aws:iam::accountId:role/lambda_basic_execution'
+      Policies: AWSLambdaBasicExecutionRole
       Events:
         MyProviderApi:
           Type: Api
