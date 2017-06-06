@@ -13,12 +13,9 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      - mkdir deploy
-      - mkdir deploy/api
-      - cp target/scala-2.12/api.jar deploy/api
       - aws cloudformation package --template-file sam.yml --s3-bucket lambda.github.api --output-template-file new-sam.yml
 artifacts:
   type: zip
   files:
-    - deploy/api/api.jar
+    - target/scala-2.12/api.jar
     - new-sam.yml
