@@ -7,6 +7,8 @@ lazy val root = (project in file(".")).
     )),
     name := "GitHub Repositories Lambda Test",
 
+    assemblyJarName := "api.jar",
+
     libraryDependencies ++= Seq(
       "com.amazonaws" % "aws-lambda-java-core" % "1.1.0",
       "com.amazonaws" % "aws-java-sdk-kms" % "1.11.135",
