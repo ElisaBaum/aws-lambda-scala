@@ -22,9 +22,11 @@ class GitHubService(config: Config) {
 
   private def buildRepositoriesRequest(request: Request) = {
     val apiUrl = s"${config.githubApiUrl}/users/${request.username}/repos"
-    Http(apiUrl)
-      .header("Accept", "application/json")
-      .header("Authorization", s"token ${config.personalAccessToken}")
+    val httpRequest = Http(apiUrl).header("Accept", "application/json")
+
+    config.personalAccessToken
+      .map(token => httpRequest.header("Authorization", s"token $token"))
+      .getOrElse(httpRequest)
   }
 
 }
