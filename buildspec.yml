@@ -1,0 +1,24 @@
+version: 0.1
+
+phases:
+  pre_build:
+    commands:
+      - sbt clean
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Run the test and package the code...
+      - sbt compile
+      - sbt assembly
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - mkdir deploy
+      - mkdir deploy/api
+      - cp target/scala-2.12/*.jar deploy/api
+      - aws cloudformation package --template-file sam.yaml --s3-bucket lambda-test-bucket --output-template-file new-sam.yaml
+artifacts:
+  type: zip
+  files:
+    - deploy/api/provider.jar
+    - new-sam.yaml

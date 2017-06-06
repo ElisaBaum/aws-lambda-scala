@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+
+Resources:
+  lambda-github-repositories:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: 'repository.Handler::handleRequest'
+      Runtime: java8
+      MemorySize: 512
+      Timeout: 10
+      Role: 'arn:aws:iam::accountId:role/lambda_basic_execution'
+      Events:
+        MyProviderApi:
+          Type: Api
+          Properties:
+            Path: /api/v1/repositories/{username}
+            Method: get
+      Environment:
+        Variables:
+          githubApiUrl: https://api.github.com
+          personalAccessToken: yourEncryptedToken
