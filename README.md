@@ -3,4 +3,4 @@
 
 # aws-lambda-scala
 
-AWS Lambda example with AWS CodeBuild integration with automatic deployment in AWS CodePipeline.
+AWS Lambda example with AWS CodeBuild integration and automatic deployment in AWS CodePipeline.
