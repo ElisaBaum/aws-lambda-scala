@@ -7,6 +7,7 @@ Resources:
     Properties:
       Handler: 'repository.Handler::handleRequest'
       Runtime: java8
+      CodeUri: ./deploy
       MemorySize: 512
       Timeout: 10
       Policies: AWSLambdaBasicExecutionRole
